@@ -71,7 +71,7 @@
 							</div>
 							<div filter="JOB-D">
 								<input tk="N" value="送貨員"/>
-								<div>月薪: 每<input tk="S:m" type="number" value="1"/>個月，活存增加<input tk="S:+" type="number" value="30000"/></div>
+								<div>月薪: 每<input tk="S:m" type="number" value="0"/>月，活存增加<input tk="S:+" type="number" value="30000"/></div>
 								<div>使用條件: <input tk="REQ" value="機車"/></div>
 							</div>
 							<div filter="PAY-LIFE">
@@ -133,16 +133,20 @@
 							</div>
 							<div filter="DEBT-LOAN">
 								<input tk="N" value="貸款"/>
-								<div>費用: 活存增加<input tk="G:+" type="number" value="10000000"/></div>
-								<div>費用: 每<input tk="F:m" type="hidden" value="0"/>月，
+								<div>活存增加<input tk="G:+" type="number" value="10000000"/></div>
+								<div>債務增加<input tk="G:+D" type="number" value="10000000"/></div>
+								<div>每<input tk="F:m" type="hidden" value="0"/>月，
 									活存減少<input tk="F:-" type="number" value="30000"/>，
+								    債務減少<input tk="G:+D" type="number" value="20000"/>，
 									直至<input tk="X:a" type="number" value="480"/>個月後<input tk="X:$" type="hidden" value="x"/>。</div>
 							</div>
 							<div filter="DEBT-INSTALLMENT">
 								<input tk="N" value="分期付款"/>
-								<div>費用: 活存增加<input tk="G:+" type="number" value="60000"/></div>
+								<div>活存增加<input tk="G:+" type="number" value="60000"/></div>
+								<div>債務增加<input tk="G:+" type="number" value="60000"/></div>
 								<div>費用: 每<input tk="F:m" type="hidden" value="0"/>月，
 									活存減少<input tk="F:-" type="number" value="6000"/>，
+									債務減少<input tk="F:-" type="number" value="6000"/>，
 									直至<input tk="X:a" type="number" value="6"/>個月後<input tk="X:$" type="hidden" value="x"/>。</div>
 							</div>
 						</div>
