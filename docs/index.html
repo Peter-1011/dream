@@ -156,7 +156,14 @@
 	}	// }}}
 
 	document.onload=async ()=>{
-		document.App = new _Application_(await Piers.URL("pref.json").request());
+		//document.App = new _Application_(await Piers.URL("pref.json").request());
+		document.App = new _Application_({
+			"Pages":{
+				"Login":{"F":"tab/Login"},
+				"FuturePeek":{"F":"tab/FuturePeek","L":"快轉夢想"}
+			},
+			"StartPage":"FuturePeek"
+		});
 		document.body.querySelector('[func="'+(Piers.Env.Args.O.SP||document.App.Preference.StartPage)+'"]').click();
 		document.body.style.opacity=1;
 	};
