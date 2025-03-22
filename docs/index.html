@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
-	<title>Chihlee Smart Piers</title>
+	<title>Chihlee Finance Project</title>
 	<link rel="icon" type="image/jpeg" href="https://www.cyberpiers.com/img/Cyberpiers_20241024.jpg"/>
 	<script>
 	class _Base_
@@ -19,10 +19,9 @@
 				this.Root.ClickHandler = function(evt) {
 					try {
 						let f = Piers.DOM(evt.target).find('['+fkey+']');
-						if (cb(evt, f.getAttribute(fkey))) {
-							evt.preventDefault();
-							evt.stopPropagation();
-						}
+						cb(evt, f.getAttribute(fkey));
+						evt.preventDefault();
+						evt.stopPropagation();
 					} catch(x) { }
 				};
 			this.Root.addEventListener("click",this.Root.ClickHandler);
@@ -103,8 +102,8 @@
 			);
 		}
 		open (tn) {
-			document.App.Bar.markActive(tn);
 			this.Form.set(tn);
+			document.App.Bar.markActive(tn);
 		}
 	}	// }}}
 
@@ -156,14 +155,7 @@
 	}	// }}}
 
 	document.onload=async ()=>{
-		//document.App = new _Application_(await Piers.URL("pref.json").request());
-		document.App = new _Application_({
-			"Pages":{
-				"Login":{"F":"tab/Login"},
-				"FuturePeek":{"F":"tab/FuturePeek","L":"快轉夢想"}
-			},
-			"StartPage":"FuturePeek"
-		});
+		document.App = new _Application_(await Piers.URL("pref.json").request());
 		document.body.querySelector('[func="'+(Piers.Env.Args.O.SP||document.App.Preference.StartPage)+'"]').click();
 		document.body.style.opacity=1;
 	};
@@ -249,10 +241,10 @@
 					<td style='background:url("https://www.cyberpiers.com/img/Cyberpiers_20241024.jpg") no-repeat left/contain; width:12vmin; height:8vmin;' onclick="document.App.Bar.toggle();"></td>
 					<td style="text-align:left;vertical-align:top">
             			<div style="font-weight:700;">
-							致理智慧碼頭
+							致理財金專題
 						</div>
             			<div style="font-size:70%;font-weight:300;">
-							Chihlee Smart Piers
+							Chihlee Finance Projects
 						</div>
 					</td>
 					<td style="text-align:right;vertical-align:top;padding-right:8px;">

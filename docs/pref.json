@@ -1,9 +1,9 @@
 {
 	"Pages":{
 		"Login":{"F":"tab/Login"},
-		"Timeline":{"F":"tab/Timeline","L":"快轉夢想"},
-		"SmartBudget":{"F":"tab/SmartBudget","L":"透明錢包"},
-		"RollCall":{"F":"tab/RollCall","L":"致理點點名"}
+		"Welcome":{"F":"tab/Welcome","L":"歡迎光臨"},
+		"Tutorial":{"F":"tab/Tutorial","L":"使用指南"},
+		"FuturePeek":{"F":"tab/FuturePeek","L":"快轉夢想"}
 	},
-	"StartPage":"Timeline"
+	"StartPage":"FuturePeek"
 }

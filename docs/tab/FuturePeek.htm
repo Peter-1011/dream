@@ -41,6 +41,7 @@
 									<option value="-">請選擇:</option>
 									<option value="LIFE">生活費</option>
 									<option value="SERVICE">水電垃圾電信網路保護費</option>
+									<option value="RENT">房租</option>
 								</select>
 								<select filter="DEBT">
 									<option value="-">請選擇:</option>
@@ -50,6 +51,8 @@
 								<select filter="INVEST">
 									<option value="-">-</option>
 									<option value="STOCK">股票</option>
+									<option value="BUYSTOCK">增加投資</option>
+									<option value="SELLSTOCK">減少投資</option>
 									<option value="STUDY">讀大學</option>
 									<option value="MOTORCYCLE">買機車</option>
 									<option value="HOUSE">買房</option>
@@ -61,7 +64,6 @@
 								<input tk="N" value="理財專員"/>
 								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="28000"/></div>
 								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="56000"/></div>
-								<div>使用條件: <input tk="REQ" value=""/></div>
 							</div>
 							<div filter="JOB-U">
 								<input tk="N" value="分析師"/>
@@ -88,12 +90,19 @@
 							</div>
 							<div filter="INVEST-STOCK">
 								<input tk="N" value="股票投資"/>
-								<div>費用: 活存轉移<input tk="I:+INV" type="number" value="100000"/>至股票投資</div>
-								<div>收益: 每<input tk="E:m" type="hidden" value="0"/>月，股票投資 * <input tk="E:*INV"  type="number" value="1.05"/></div>
+								<div>收益: 每<input tk="E:m" type="hidden" value="0"/>月，股票投資 * <input tk="E:*I"  type="number" value="1.05"/></div>
 							</div>
-							<div filter="INVEST-STOCK">
-								<input tk="N" value="股票賣出"/>
-								<div>費用: 股票投資轉移<input tk="I:-INV" type="number" value="100000"/>至活存<input tk="X:$" type="hidden" value="x"/></div>
+							<div filter="INVEST-BUYSTOCK">
+								<input tk="N" value="增加投資"/>
+								<div>投資增加<input tk="I:+I" type="number" value="100000"/></div>
+								<div>活存減少<input tk="F:-" type="number" value="100000"/></div>
+								<input tk="X:$" type="hidden" value="x"/>
+							</div>
+							<div filter="INVEST-SELLSTOCK">
+								<input tk="N" value="減少投資"/>
+								<div>投資減少<input tk="I:-I" type="number" value="100000"/></div>
+								<div>活存增加<input tk="F:+" type="number" value="100000"/></div>
+								<input tk="X:$" type="hidden" value="x"/>
 							</div>
 							<div filter="INVEST-STUDY">
 								<input tk="N" value="讀大學"/>
@@ -115,11 +124,13 @@
 								<input tk="N" value="買機車"/>
 								<div>費用: 活存減少<input tk="F:-" type="number" value="60000"/></div>
 								<div>取得 <input tk="P:+P" value="機車"/></div>
+								<input tk="X:$" type="hidden" value="x"/>
 							</div>
 							<div filter="INVEST-HOUSE">
 								<input tk="N" value="買屋"/>
 								<div>費用: 活存減少<input tk="F:-" type="number" value="10000000"/></div>
 								<div>取得 <input tk="P:+P" value="住家"/></div>
+								<input tk="X:$" type="hidden" value="x"/>
 							</div>
 							<div filter="INVEST-LOTTERY">
 								<input tk="N" value="樂透彩"/>
@@ -137,17 +148,17 @@
 								<div>債務增加<input tk="G:+D" type="number" value="10000000"/></div>
 								<div>每<input tk="F:m" type="hidden" value="0"/>月，
 									活存減少<input tk="F:-" type="number" value="30000"/>，
-								    債務減少<input tk="G:+D" type="number" value="20000"/>，
+								    債務減少<input tk="F:-D" type="number" value="20000"/>，
 									直至<input tk="X:a" type="number" value="480"/>個月後<input tk="X:$" type="hidden" value="x"/>。</div>
 							</div>
 							<div filter="DEBT-INSTALLMENT">
 								<input tk="N" value="分期付款"/>
 								<div>活存增加<input tk="G:+" type="number" value="60000"/></div>
-								<div>債務增加<input tk="G:+" type="number" value="60000"/></div>
-								<div>費用: 每<input tk="F:m" type="hidden" value="0"/>月，
+								<div>債務增加<input tk="G:+D" type="number" value="60000"/></div>
+								<div>每<input tk="F:m" type="hidden" value="0"/>月，
 									活存減少<input tk="F:-" type="number" value="6000"/>，
-									債務減少<input tk="F:-" type="number" value="6000"/>，
-									直至<input tk="X:a" type="number" value="6"/>個月後<input tk="X:$" type="hidden" value="x"/>。</div>
+									債務減少<input tk="F:-D" type="number" value="6000"/>，
+									直至<input tk="X:a" type="number" value="10"/>個月後<input tk="X:$" type="hidden" value="x"/>。</div>
 							</div>
 						</div>
 					</td>

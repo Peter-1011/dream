@@ -1,37 +1,30 @@
 document.currentScript.value=async (root,args)=>{
-	console.log("Timeline: ",root,args);
-
-	/*let rst = await APP.Head.request("home/file",{"F":"w","N":"test2","D":{"A":1,"B":2,"C":3}});
-	console.log("Write Test Result is ",rst);
-	rst = await APP.Head.request("home/file",{"F":"r","N":"test2"});
-	console.log("Data is ",rst.R,rst.D);
-	*/
 
 	class YM {
-		constructor (yms) {
+		constructor (yms) {	// {{{
 			yms = yms.split("-").map((v)=>parseInt(v));
 			this.ms = (yms[0]-2000)*12+yms[1]-1;
-		}
-		toString () {
+		}	// }}}
+		toString () {	// {{{
 			return (2000+parseInt(this.ms/12)).toString()+"-"+((this.ms%12)+101).toString().substring(1);
-		}
-		diff (b) {
+		}	// }}}
+		diff (b) {	// {{{
 			return this.ms - b.ms;
-		}
-		add (v) {
+		}	// }}}
+		add (v) {	// {{{
 			this.ms+=v;
 			return this;
-		}
-		match (y, m) {
+		}	// }}}
+		match (y, m) {	// {{{
 			if(y && parseInt(this.ms/12) != y) return false;
 			if(m && ((this.ms%12)+1) != m) return false;
 			return true;
-		}
+		}	// }}}
 	}
 
 	class PlanEditor extends _Base_
-	{	// {{{
-		constructor (E, cb) {
+	{
+		constructor (E, cb) {	// {{{
 			super(E);
 			this.Tag = E.getAttribute("WidgetTag");
 			this.set("JOB");
@@ -71,8 +64,8 @@ document.currentScript.value=async (root,args)=>{
 				}
 				return true;
 			});
-		}
-		set (s) {
+		}	// }}}
+		set (s) {	// {{{
 			Piers.DOM(this.Root).forEach((e)=>{
 				let filter = e.getAttribute(this.Tag);
 				if (s.startsWith(filter)) {
@@ -82,33 +75,33 @@ document.currentScript.value=async (root,args)=>{
 					e.setAttribute("SWITCH","ON");
 				} else e.setAttribute("SWITCH","OFF");
 			},'['+this.Tag+']');
-		}
-		get () {
+		}	// }}}
+		get () {	// {{{
 			return Piers.DOM(this.Root).reduce((r,e)=>{
 				if (e.getAttribute("SWITCH") === "OFF") return;
 				let key = e.getAttribute(this.Tag)+"-"+(e.value||"");
 				return r.length > key.length ? r : key;
 			}, 'select['+this.Tag+']', "");
-		}
-	}	// }}}
+		}	// }}}
+	}
 
 	class PlanList extends _Base_
-	{	// {{{
-		constructor (EL,EE) {
+	{
+		constructor (EL,EE) {	// {{{
 			super(EL);
 			this.Form = new Piers.Widget.List(this.Root);
 			this.List = [];
 			this.bind((evt,func)=>this.dispatch(evt,func));
 			this.Editor = new PlanEditor (EE, (func, arg)=>"add"===func?this.add.apply(this,arg):undefined);
-		}
-		add (v) {
+		}	// }}}
+		add (v) {	// {{{
 			this.List.push(v);
 			this.Form.clear().set(this.List);
-		}
-		redraw () {
+		}	// }}}
+		redraw () {	// {{{
 			this.Form.clear().set(this.List);
-		}
-		dispatch (evt,func) {
+		}	// }}}
+		dispatch (evt,func) {	// {{{
 			switch(func){
 			case "Remove":
 				((row)=>{
@@ -118,12 +111,12 @@ document.currentScript.value=async (root,args)=>{
 				break;
 			}
 			return true;
-		}
-	}	// }}}
+		}	// }}}
+	}
 
 	class FrameList extends _Base_
-	{	// {{{
-		constructor (E) {
+	{
+		constructor (E) {	// {{{
 			super(E);
 			this.Form = new Piers.Widget.List(this.Root);
 			this.List = [];
@@ -155,7 +148,7 @@ document.currentScript.value=async (root,args)=>{
 					this.State = "Paused";
 					this.Timer = setInterval(() => {
 						if (this.State==="Paused") return;
-						cb("Next");
+						cb("Next",this);
 					}, step);
 				}
 			} // 媒體撥放器宣告
@@ -184,14 +177,21 @@ document.currentScript.value=async (root,args)=>{
 									v[k].b = ym.ms - 1;
 									if ("a" in v[k]) continue;
 								}
+								console.log("DEBUG",r);
 								if ("+" in v[k])
 									r.S += parseInt(v[k]['+']);
 								if ("-" in v[k])
 									r.S -= parseInt(v[k]['-']);
 								if ("+I" in v[k])
-									r.I += parseInt(v[k]['+']);
+									r.I += parseInt(v[k]['+I']);
 								if ("-I" in v[k])
-									r.I -= parseInt(v[k]['-']);
+									r.I -= parseInt(v[k]['-I']);
+								if ("*I" in v[k])
+									r.I = Math.floor(r.I*parseFloat(v[k]['*I']));
+								if ("+D" in v[k])
+									r.D += parseInt(v[k]['+D']);
+								if ("-D" in v[k])
+									r.D -= parseInt(v[k]['-D']);
 								if ("+P" in v[k]) {
 									r.P = r.P.split(",").filter((x)=>x&&v[k]["+P"]!==x);
 									r.P.push(v[k]['+P']);
@@ -217,20 +217,20 @@ document.currentScript.value=async (root,args)=>{
 				}
 			}, 300);
 			this.MCtrl.Form.set(this.current());
-		}
-		current () {
+		}	// }}}
+		current () {	// {{{
 			return Object.assign({},this.List[0]);
-		}
-		add (frame) {
+		}	// }}}
+		add (frame) {	// {{{
 			this.List.unshift(Object.assign({},frame));
 			this.Form.set(this.List);
-		}
-		remove () {
+		}	// }}}
+		remove () {	// {{{
 			let rv = this.List.shift();
 			this.Form.set(this.List);
 			return rv;
-		}
-		async drawChart () {
+		}	// }}}
+		async drawChart () {	// {{{
 			let E=document.body.querySelector('[UIE="Plot"]');
 			E.setAttribute("SWITCH", E.getAttribute("SWITCH")==="OFF"?"ON":"OFF");
 			if (E.getAttribute("SWITCH")==="OFF") return;
@@ -242,8 +242,8 @@ document.currentScript.value=async (root,args)=>{
 				r[v.T]={"活存":v.S,"投資":v.I,"債務":v.D};
 				return r;
 			},{}));
-		}
-	}	// }}}
+		}	// }}}
+	}
 
 	// fl:畫面 [{"T":{"S","I","D","P"}}]
 	let frames = new FrameList (root.querySelector('[WidgetTag="Frame"]'));
