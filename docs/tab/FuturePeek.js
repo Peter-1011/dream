@@ -120,11 +120,13 @@ document.currentScript.value=async (root,args)=>{
 			super(E);
 			this.Form = new Piers.Widget.List(this.Root);
 			this.List = [];
+			this.Plot=document.body.querySelector('[UIE="Plot"]');
 
 			this.add({
 				T:((d)=>d.getFullYear()+"-"+(101+d.getMonth()).toString().substring(1))(new Date()),
 				S:100000, I:0, D:0, P:""
 			});
+
 
 			// 目前的計畫
 			this.Plans = new PlanList (
@@ -177,7 +179,6 @@ document.currentScript.value=async (root,args)=>{
 									v[k].b = ym.ms - 1;
 									if ("a" in v[k]) continue;
 								}
-								console.log("DEBUG",r);
 								if ("+" in v[k])
 									r.S += parseInt(v[k]['+']);
 								if ("-" in v[k])
@@ -221,8 +222,15 @@ document.currentScript.value=async (root,args)=>{
 		current () {	// {{{
 			return Object.assign({},this.List[0]);
 		}	// }}}
-		add (frame) {	// {{{
-			this.List.unshift(Object.assign({},frame));
+		async add (frame) {	// {{{
+			let v = Object.assign({},frame), r={};
+			this.List.unshift(v);
+			r[v.T] = {"活存":v.S,"投資":v.I,"債務":v.D};
+			if (!this.Plot.Chart) {
+				if (!this.newChart) this.newChart = await Piers.import(Piers.Env.PierPath+"chart.js");
+				this.Plot.Chart = new this.newChart(this.Plot.querySelector("canvas"));
+			}
+			this.Plot.Chart.draw_line(r);
 			this.Form.set(this.List);
 		}	// }}}
 		remove () {	// {{{
@@ -230,18 +238,9 @@ document.currentScript.value=async (root,args)=>{
 			this.Form.set(this.List);
 			return rv;
 		}	// }}}
-		async drawChart () {	// {{{
-			let E=document.body.querySelector('[UIE="Plot"]');
-			E.setAttribute("SWITCH", E.getAttribute("SWITCH")==="OFF"?"ON":"OFF");
-			if (E.getAttribute("SWITCH")==="OFF") return;
-			if (!E.Chart){
-				if (!this.newChart) this.newChart = await Piers.import(Piers.Env.PierPath+"chart.js");
-				E.Chart = new this.newChart(E.querySelector("canvas"));
-			}
-			E.Chart.draw_line(this.List.reduce((r,v,i)=>{
-				r[v.T]={"活存":v.S,"投資":v.I,"債務":v.D};
-				return r;
-			},{}));
+		drawChart () {	// {{{
+			this.Plot.setAttribute("SWITCH", this.Plot.getAttribute("SWITCH")==="OFF"?"ON":"OFF");
+			if (this.Plot.getAttribute("SWITCH")==="OFF") return;
 		}	// }}}
 	}
 
