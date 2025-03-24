@@ -8,7 +8,7 @@ test -d "${tmp}" && rm -rf "${tmp}"
 mkdir "${tmp}"
 cd "${tmp}"
 
-wget "https://github.com/porshenlai/Piers.js/archive/refs/heads/main.zip"
+curl -o main.zip "https://github.com/porshenlai/Piers.js/archive/refs/heads/main.zip"
 unzip main.zip
 test -d "${root}/docs/piers" && rm -rf ${root}/docs/piers/
 test -d "${root}/docs/piers" || mkdir ${root}/docs/piers/

@@ -1,0 +1,30 @@
+[PsL="SBar"] {
+	display:flex; flex-flow:column nowrap;
+	width:100%; height:100%;
+	justify-content:space-between; align-items:center; align-content:space-between;
+}
+[PsL="SBar"]>.L {
+	flex:0 0 auto;
+	position:relative; width:100%; height:auto;
+	overflow:hidden;
+}
+[PsL="SBar"]>.V {
+	flex:1 1 auto;
+	position:relative; width:100%; height:auto;
+	overflow-y:auto; overflow-x:hidden;
+}
+[PsL="LBar"] {
+	display:flex; flex-flow:row nowrap;
+	width:100%; height:100%;
+	justify-content:space-between; align-items:center; align-content:space-between;
+}
+[PsL="LBar"]>.L {
+	flex:0 0 auto;
+	position:relative; width:auto; height:100%;
+	overflow:hidden;
+}
+[PsL="LBar"]>.V {
+	flex:1 1 auto;
+	position:relative; width:auto; height:100%;
+	overflow-y:hidden; overflow-x:auto;
+}
