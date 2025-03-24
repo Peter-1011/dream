@@ -179,29 +179,31 @@ document.currentScript.value=async (root,args)=>{
 									v[k].b = ym.ms - 1;
 									if ("a" in v[k]) continue;
 								}
-								if ("+" in v[k])
-									r.S += parseInt(v[k]['+']);
-								if ("-" in v[k])
-									r.S -= parseInt(v[k]['-']);
-								if ("+I" in v[k])
-									r.I += parseInt(v[k]['+I']);
-								if ("-I" in v[k])
-									r.I -= parseInt(v[k]['-I']);
-								if ("*I" in v[k])
-									r.I = Math.floor(r.I*parseFloat(v[k]['*I']));
-								if ("+D" in v[k])
-									r.D += parseInt(v[k]['+D']);
-								if ("-D" in v[k])
-									r.D -= parseInt(v[k]['-D']);
-								if ("+P" in v[k]) {
-									r.P = r.P.split(",").filter((x)=>x&&v[k]["+P"]!==x);
-									r.P.push(v[k]['+P']);
-									r.P = r.P.join(",");
+								if (!("c" in v[k] && Math.random() > v[k]['c'])){
+									if ("+" in v[k])
+										r.S += parseInt(v[k]['+']);
+									if ("-" in v[k])
+										r.S -= parseInt(v[k]['-']);
+									if ("+I" in v[k])
+										r.I += parseInt(v[k]['+I']);
+									if ("-I" in v[k])
+										r.I -= parseInt(v[k]['-I']);
+									if ("*I" in v[k])
+										r.I = Math.floor(r.I*(1+(parseFloat(v[k]['*I'])-1)/12));
+									if ("+D" in v[k])
+										r.D += parseInt(v[k]['+D']);
+									if ("-D" in v[k])
+										r.D -= parseInt(v[k]['-D']);
+									if ("+P" in v[k]) {
+										r.P = r.P.split(",").filter((x)=>x&&v[k]["+P"]!==x);
+										r.P.push(v[k]['+P']);
+										r.P = r.P.join(",");
+									}
+									if ("-P" in v[k])
+										r.P = r.P.split(",").filter((x)=>x&&v[k]["-P"]!==x).join(",");
+									if ("$" in v[k])
+										delete v.N;
 								}
-								if ("-P" in v[k])
-									r.P = r.P.split(",").filter((x)=>x&&v[k]["-P"]!==x).join(",");
-								if ("$" in v[k])
-									delete v.N;
 							}
 							return r;
 							// }}}
