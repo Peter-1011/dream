@@ -26,22 +26,39 @@
 						<div WidgetTag="filter" value="">
 							<div style="background:lightblue;padding:4px;">
 								<select filter="">
-									<option value="JOB">工作</option>
-									<option value="PAY">費用</option>
-									<option value="INVEST">投資</option>
-									<option value="DEBT">舉債</option>
+									<option value="JOB">💼工作</option>
+									<option value="PAY">💳費用</option>
+									<option value="INVEST">📈投資</option>
+									<option value="DEBT">💸舉債</option>
 								</select>
 								<select filter="JOB">
 									<option value="-">請選擇:</option>
-									<option value="H">理財專員</option>
+									<option value="H">金融業務</option>
 									<option value="U">分析師</option>
-									<option value="D">送貨員</option>
+									<option value="D">物流</option>
+                                                                        <option value="X">農漁民</option>
+                                                                        <option value="A">各業工人</option>
+                                                                        <option value="B">設備操作員</option>
+                                                                        <option value="C">維修員</option>
+                                                                        <option value="E">服務員</option>
+                                                                        <option value="F">司機</option>
+                                                                        <option value="G">保全</option>
+                                                                        <option value="I">照護員</option>
+                                                                        <option value="J">行政人員</option>
+                                                                        <option value="K">工程師</option>
+                                                                        <option value="L">銷售人員</option>
+                                                                        <option value="M">公務員</option>
+                                                                        <option value="N">軍警消</option>
+                                                                        <option value="O">工讀生</option>
 								</select>
 								<select filter="PAY">
 									<option value="-">請選擇:</option>
 									<option value="LIFE">生活費</option>
-									<option value="SERVICE">水電垃圾電信網路保護費</option>
+									<option value="SERVICE">水電瓦斯費</option>
 									<option value="RENT">房租</option>
+                                                                        <option value="ZZ">交通費</option>
+                                                                        <option value="XX">娛樂費</option>
+                                                                        <option value="CC">保險費</option>
 								</select>
 								<select filter="DEBT">
 									<option value="-">請選擇:</option>
@@ -57,14 +74,87 @@
 									<option value="MOTORCYCLE">買機車</option>
 									<option value="HOUSE">買房</option>
 									<option value="LOTTERY">樂透彩</option>
+                                                                        <option value="AB">債券</option>
+                                                                        <option value="AA">基金</option>
+                                                                        <option value="AC">虛擬貨幣</option>
+                                                                        <option value="AD">定存</option>
 								</select>
 								<button func="Add">新增</button>
 							</div>
 							<div filter="JOB-H">
-								<input tk="N" value="理財專員"/>
+								<input tk="N" value="金融業務"/>
 								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="28000"/></div>
 								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="56000"/></div>
-							</div>
+                                                        </div>
+							<div filter="JOB-X">
+								<input tk="N" value="農漁民"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="60000"/></div>
+                                                        </div>
+							<div filter="JOB-A">
+								<input tk="N" value="各業工人"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="50000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="100000"/></div>
+                                                        </div>
+							<div filter="JOB-B">
+								<input tk="N" value="設備操作員"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="40000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="80000"/></div>
+                                                        </div>
+							<div filter="JOB-C">
+								<input tk="N" value="維修員"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="41000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="82000"/></div>
+                                                        </div>
+							<div filter="JOB-E">
+								<input tk="N" value="服務員"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="32000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="64000"/></div>
+                                                        </div>
+							<div filter="JOB-F">
+								<input tk="N" value="司機"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="60000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="120000"/></div>
+                                                        </div>
+							<div filter="JOB-G">
+								<input tk="N" value="保全"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="38000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="56000"/></div>
+                                                        </div>
+							<div filter="JOB-I">
+								<input tk="N" value="照護員"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="45000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="90000"/></div>
+                                                        </div>
+							<div filter="JOB-J">
+								<input tk="N" value="行政人員"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="37000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="54000"/></div>
+                                                        </div>
+							<div filter="JOB-K">
+								<input tk="N" value="工程師"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="70000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="140000"/></div>
+                                                        </div>
+							<div filter="JOB-L">
+								<input tk="N" value="銷售人員"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="32000"/></div>
+								<div>分紅: 每年<input tk="A:m" type="number" value="3"/>月，活存增加<input tk="A:+" type="number" value="96000"/></div>
+                                                        </div>
+							<div filter="JOB-M">
+								<input tk="N" value="公務員"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="60000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="120000"/></div>
+                                                        </div>
+							<div filter="JOB-N">
+								<input tk="N" value="軍警消"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="50000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="2"/>月，活存增加<input tk="A:+" type="number" value="100000"/></div>
+                                                        </div>
+							<div filter="JOB-O">
+								<input tk="N" value="工讀生"/>
+								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="20000"/></div>
+								<div>獎金: 每年<input tk="A:m" type="number" value="1"/>月，活存增加<input tk="A:+" type="number" value="20000"/></div>
+                                                        </div>
 							<div filter="JOB-U">
 								<input tk="N" value="分析師"/>
 								<div>月薪: 每<input tk="S:m" type="hidden" value="0"/>月，活存增加<input tk="S:+" type="number" value="40000"/></div>
@@ -72,12 +162,24 @@
 								<div>使用條件: <input tk="REQ" value="大學學歷"/></div>
 							</div>
 							<div filter="JOB-D">
-								<input tk="N" value="送貨員"/>
+								<input tk="N" value="物流"/>
 								<div>月薪: 每<input tk="S:m" type="number" value="0"/>月，活存增加<input tk="S:+" type="number" value="30000"/></div>
 								<div>使用條件: <input tk="REQ" value="機車"/></div>
 							</div>
 							<div filter="PAY-LIFE">
 								<input tk="N" value="生活費"/>
+								<div>費用: 每<input tk="F:m" type="hidden" value="0"/>月，活存減少<input tk="F:-" type="number" value="10000"/></div>
+                                                        </div>
+							<div filter="PAY-ZZ">
+								<input tk="N" value="交通費"/>
+								<div>費用: 每<input tk="F:m" type="hidden" value="0"/>月，活存減少<input tk="F:-" type="number" value="10000"/></div>
+                                                        </div>
+							<div filter="PAY-XX">
+								<input tk="N" value="娛樂費"/>
+								<div>費用: 每<input tk="F:m" type="hidden" value="0"/>月，活存減少<input tk="F:-" type="number" value="10000"/></div>
+                                                        </div>
+							<div filter="PAY-CC">
+								<input tk="N" value="保險費"/>
 								<div>費用: 每<input tk="F:m" type="hidden" value="0"/>月，活存減少<input tk="F:-" type="number" value="10000"/></div>
 							</div>
 							<div filter="PAY-SERVICE">
@@ -89,8 +191,8 @@
 								<div>房租: 每<input tk="F:m" type="hidden" value="0"/>月，活存減少<input tk="F:-" type="number" value="10000"/></div>
 							</div>
 							<div filter="INVEST-STOCK">
-								<input tk="N" value="股票投資"/>
-								<div>收益: 每<input tk="E:m" type="hidden" value="0"/>月，股票投資 * <input tk="E:*I"  type="number" value="1.05"/></div>
+								<input tk="N" value="股票"/>
+								<div>收益: 每<input tk="E:m" type="hidden" value="0"/>月，股票 * <input tk="E:*I"  type="number" value="1.05"/></div>
 							</div>
 							<div filter="INVEST-BUYSTOCK">
 								<input tk="N" value="增加投資"/>
@@ -167,22 +269,22 @@
 					<td Ps="N:text"></td>
 					<td func="Remove">❌</td>
 				</tr></tbody>
-				<tbody><tr><td colspan="3" style="background-image:linear-gradient(lightblue,black 30%,green);color:yellow;">
-					<div style="margin:16px 0 0 0">播放器</div>
+				<tbody><tr><td colspan="3" style="background-image:linear-gradient(SkyBlue,Slateblue 30%,DarkSlateblue);color:yellow;">
+					<div style="margin:16px 0 0 0">圓夢路程</div>
 				</td></tr></tbody>
 				<tbody><tr>
-					<td colspan="3" align="center" WidgetTag="MC" State="Paused" style="background:darkgreen;padding:6px;">
+					<td colspan="3" align="center" WidgetTag="MC" State="Paused" style="background:MediumSlateBlue;padding:6px;">
 						<table cellspacing="7"><tbody><tr>
 							<td class="TextButton" width="7%"><div func="Prev">&lt;</div></td>
-							<td style="background:lightgreen;color:darkgreen;padding:6px;border-radius:6px;text-align:center;">
+							<td style="background:MediumSlateBlue;color:darkgreen;padding:6px;border-radius:6px;text-align:center;">
 								<input MC="T:Value" type="month"/>
 							</td>
 							<td class="TextButton" width="7%"><div func="Play">&#9654;</div><span func="Stop">&#9632;</span></td>
 							<td class="TextButton" width="7%"><div func="Next">&gt;</div></td>
 						</tr><tr>
-							<td style="background:lightgreen;color:darkgreen;padding:6px;border-radius:6px;" colspan="4">
+							<td style="background:lightblue;color:MediumSlateBlue;padding:6px;border-radius:6px;" colspan="4">
 								<div style="display:flex;">
-								活存:<input style="flex:1 1 auto;width:10%;" MC="S:Value" type="number" value="30000"/>
+								活存:<input style="flex:1 1 auto;width:10%;" MC="S:Value" type="number" value="30000"style="color:MediumSeaGreen"/>
 								投資:<input style="flex:1 1 auto;width:10%;" MC="I:Value" type="number" value="0"/>
 								負債:<input style="flex:1 1 auto;width:10%;" MC="D:Value" type="number" value="0"/>
 								<button func="Plot">&#x1F4CA;</button>
@@ -197,7 +299,7 @@
 		<div UIE="Plot" SWITCH="OFF"><canvas></canvas></div>
 
 		<div UIE="List">
-			<table border="1" cellspacing="6" cellpadding="6" width="98%" align="center">
+			<table border="1" cellspacing="6" cellpadding="6" width="98%" align="Rounded">
 				<thead><tr>
 					<th>年月</th>
 					<th>活存</th>
